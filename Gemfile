@@ -63,7 +63,16 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+# Added by me
+
 # Adding rspec
 group :development, :test do
   gem 'rspec-rails', ">= 3.9.0"
+end
+
+# Adding shoulda-matchers gem which provides RSpec one-liners to test common Rails functionality that, if written by hand, would be much longer, more complex, and error-prone.
+
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
 end
