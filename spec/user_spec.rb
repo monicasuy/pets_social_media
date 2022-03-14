@@ -27,9 +27,10 @@ RSpec.describe User, :type => :model do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without an id" do
-    subject.id = nil
-    expect(subject).to_not be_valid
+
+  describe "Associations" do
+    it { should have_many(:pets).without_validating_presence }
   end
+
 
 end
