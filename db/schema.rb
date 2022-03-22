@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_03_22_122446) do
     t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
+    end
 
   add_foreign_key "pets", "users"
   add_foreign_key "playdates", "pets"
