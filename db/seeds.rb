@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+new_user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: "Carrer Mallorca 272 08037 Barcelona",
+    email: Faker::Internet.email,
+    password: 'password'
+  )
+  puts "User created"
+
+  dog1 = Pet.create(name: "Nolan", breed: "American Staffordshire Terrier", size: "medium", sex: "male",
+  description: "Nolan loves eating apples, he's super friendly and playful and loves cuddling.
+  He is so calm and well behaved. So easy to love", user: User.first)
+
+  puts "Nolan created"
+
+  dog1.photos.attach(io: URI.open('https://res.cloudinary.com/de4v6txjq/image/upload/c_fill/v1/production/7j5sq0q38y3q5nc2zxcwp3emxgtr'), filename: 'Nolan')
+
+  puts 'Photo attached to Nolan'

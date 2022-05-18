@@ -1,0 +1,26 @@
+<%= form_tag pets_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "enter city or zip code"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<div style="width: 50%; height: 600px;"
+  data-controller="mapbox"
+  data-mapbox-markers-value="<%= @markers.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<% @pets.each do |pet| %>
+  <div>
+    <%= pet.name %>
+    <%= pet.breed %>
+    <%= pet.sex %>
+    <%= pet.description %>
+    <% pet.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill  %>
+    <% end %>
+  </div>
+<% end %>
